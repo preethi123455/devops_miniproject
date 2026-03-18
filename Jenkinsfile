@@ -32,7 +32,7 @@ pipeline {
                     // Stop/Remove existing container
                     sh 'docker rm -f microshop-dev || true'
                     // Deploy to DEV port (e.g., 8080)
-                    sh "docker run -d -p 8080:80 --name microshop-dev ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    sh "docker run -d -p 8081:80 --name microshop-dev ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                 }
             }
         }
