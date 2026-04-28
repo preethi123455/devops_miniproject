@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/preethi123455/devops_miniproject.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+                // For HTML, no build needed, or add commands
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                // Add deploy steps, e.g., copy to server
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+# Ignore large binary installers
+src/*.war
+src/*.msi
+src/*.zip
+
+# Ignore Terraform local state and binaries
+terraform/.terraform/
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/.terraform.lock.hcl
+
+# Ignore OS files
+Thumbs.db
+.DS_Store
