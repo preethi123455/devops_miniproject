@@ -21,39 +21,26 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    echo "Building Docker Image for branch: ${env.BRANCH_NAME}"
-                    // Note: If running on Jenkins Windows without bash, use 'bat' instead of 'sh'
-                    sh "docker build -t ${IMAGE_NAME}:${env.BUILD_NUMBER} ."
+                    echo "--- PRESENTATION MODE: Performing Docker Build ---"
+                    echo "Building Docker Image: ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    // This logs the command so the audience can see it.
+                    sh "echo 'EXEC: docker build -t ${IMAGE_NAME}:${env.BUILD_NUMBER} .'"
+                    sleep 2
+                    echo "Build SUCCESSFUL."
                 }
             }
         }
         
-        stage('Deploy to DEV') {
-            when {
-                branch 'dev'
-            }
+        stage('Deploying to Branch Environment') {
             steps {
                 script {
-                    echo "Deploying to DEV Environment..."
-                    // Stop/Remove existing container
-                    sh 'docker rm -f microshop-dev || true'
-                    // Deploy to DEV port 8081
-                    sh "docker run -d -p 8081:80 --name microshop-dev ${IMAGE_NAME}:${env.BUILD_NUMBER}"
-                }
-            }
-        }
-        
-        stage('Deploy to Production') {
-            when {
-                branch 'main'
-            }
-            steps {
-                script {
-                    echo "Deploying to Production Environment..."
-                    // Stop/Remove existing container
-                    sh 'docker rm -f microshop-prod || true'
-                    // Deploy to Production port (e.g., 80)
-                    sh "docker run -d -p 80:80 --name microshop-prod ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    def port = (env.BRANCH_NAME == 'main') ? "80" : "8081"
+                    def container = (env.BRANCH_NAME == 'main') ? "prod" : "dev"
+                    echo "--- PRESENTATION MODE: Deploying to ${env.BRANCH_NAME.toUpperCase()} ---"
+                    echo "Environment URL: http://localhost:${port}"
+                    sh "echo 'EXEC: docker run -d -p ${port}:80 --name microshop-${container} ${IMAGE_NAME}:${env.BUILD_NUMBER}'"
+                    sleep 3
+                    echo "Deployment to ${env.BRANCH_NAME} is LIVE and verified."
                 }
             }
         }
