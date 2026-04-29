@@ -1,6 +1,4 @@
 # Terraform configuration to manage our local Docker environment
-# We use local-exec as a "bulletproof" wrapper to avoid Docker API version mismatch errors 
-# that can happen with the native Terraform Docker provider on very new Docker versions.
 
 terraform {
   required_providers {
@@ -17,7 +15,7 @@ resource "null_resource" "cartify_deployment" {
     command = "docker build -t cartify-app:latest .."
   }
 
-  # 2. Cleanup existing containers (to prevent name conflicts)
+  # 2. Cleanup existing containers
   provisioner "local-exec" {
     command = "docker rm -f cartify-prod cartify-dev || echo 'No existing containers to remove'"
   }
@@ -32,7 +30,6 @@ resource "null_resource" "cartify_deployment" {
     command = "docker run -d -p 8081:80 --name cartify-dev cartify-app:latest"
   }
 
-  # This makes it easy to run again if you change code
   triggers = {
     build_number = "${timestamp()}"
   }
