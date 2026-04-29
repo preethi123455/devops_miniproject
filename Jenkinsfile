@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "cartify-app"
+        IMAGE_NAME = "microshop-app"
     }
 
     stages {
@@ -34,8 +34,8 @@ pipeline {
             steps {
                 script {
                     echo "Deploying to DEV Environment..."
-                    sh 'docker rm -f cartify-dev || true'
-                    sh "docker run -d -p 8081:80 --name cartify-dev ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    sh 'docker rm -f microshop-dev || true'
+                    sh "docker run -d -p 8081:80 --name microshop-dev ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                 }
             }
         }
@@ -47,8 +47,8 @@ pipeline {
             steps {
                 script {
                     echo "Deploying to Production Environment..."
-                    sh 'docker rm -f cartify-prod || true'
-                    sh "docker run -d -p 80:80 --name cartify-prod ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    sh 'docker rm -f microshop-prod || true'
+                    sh "docker run -d -p 80:80 --name microshop-prod ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                 }
             }
         }

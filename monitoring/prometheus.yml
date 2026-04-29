@@ -6,7 +6,7 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: 'cartify-app'
+  - job_name: 'microshop-app'
     metrics_path: '/metrics.txt'
     static_configs:
       - targets: ['host.docker.internal:80', 'host.docker.internal:8081']
