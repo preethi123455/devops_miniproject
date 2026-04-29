@@ -1,0 +1,15 @@
+# HELP cartify_up Status of the Cartify application
+# TYPE cartify_up gauge
+cartify_up 1
+
+# HELP cartify_orders_total Total orders processed
+# TYPE cartify_orders_total counter
+cartify_orders_total 15
+
+# HELP cartify_cart_items Total items currently in user carts
+# TYPE cartify_cart_items gauge
+cartify_cart_items 8
+
+# HELP cartify_response_time_ms Average response time in milliseconds
+# TYPE cartify_response_time_ms gauge
+cartify_response_time_ms 120

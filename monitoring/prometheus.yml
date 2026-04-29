@@ -7,6 +7,6 @@ scrape_configs:
       - targets: ['localhost:9090']
 
   - job_name: 'microshop-app'
-    metrics_path: '/'
+    metrics_path: '/metrics'
     static_configs:
       - targets: ['host.docker.internal:80', 'host.docker.internal:8081']
