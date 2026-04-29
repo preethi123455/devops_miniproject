@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Cartify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-wrapper">
+                <div class="logo-icon">🛒</div>
+                <span>Cartify</span>
+            </a>
+            <nav>
+                <a href="products.html">Shop</a>
+                <a href="orders.html">Orders</a>
+                <a href="admin.html" style="color: #9333ea; display: flex; align-items: center; gap: 0.25rem">
+                    ⚙️ Admin
+                </a>
+                <a href="cart.html" class="cart-btn">
+                    🛒 Cart
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="user-profile">
+                    <span class="text-muted">Admin User</span>
+                    <a href="#" class="logout-btn">🚪 Logout</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="mt-5">Admin Dashboard</h1>
+        <p class="text-muted mb-4">Manage orders and update shipment status</p>
+
+        <div class="admin-tabs">
+            <div class="admin-tab active">Order Management</div>
+            <div class="admin-tab">Product Management</div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <p class="text-muted">Processing Orders</p>
+                <div id="stat-processing" class="stat-value">0</div>
+                <p class="text-muted" style="font-size: 0.8rem">Awaiting shipment</p>
+            </div>
+            <div class="stat-card">
+                <p class="text-muted">Shipped Orders</p>
+                <div id="stat-shipped" class="stat-value">0</div>
+                <p class="text-muted" style="font-size: 0.8rem">In transit</p>
+            </div>
+            <div class="stat-card">
+                <p class="text-muted">Delivered Orders</p>
+                <div id="stat-delivered" class="stat-value">0</div>
+                <p class="text-muted" style="font-size: 0.8rem">Completed</p>
+            </div>
+        </div>
+
+        <div class="cart-card">
+            <h3 class="mb-3">All Orders</h3>
+            <p class="text-muted mb-3">Manage and update order statuses</p>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-orders-table">
+                    <!-- Loaded by JS -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

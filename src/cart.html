@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Cartify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-wrapper">
+                <div class="logo-icon">🛒</div>
+                <span>Cartify</span>
+            </a>
+            <nav>
+                <a href="products.html">Shop</a>
+                <a href="orders.html">Orders</a>
+                <a href="cart.html" class="cart-btn">
+                    🛒 Cart
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="user-profile">
+                    <span class="text-muted">Mathu Mathi</span>
+                    <a href="#" class="logout-btn">🚪 Logout</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="products.html" class="back-link mt-5">← Continue Shopping</a>
+        <h1 class="mb-3">Shopping Cart</h1>
+
+        <div class="cart-layout">
+            <div class="cart-card">
+                <h3 id="cart-count-title" class="mb-3">Items (0)</h3>
+                <div id="cart-items">
+                    <!-- Loaded by JS -->
+                </div>
+            </div>
+
+            <div id="order-summary" class="cart-card">
+                <h3 class="mb-3">Order Summary</h3>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax (8%)</span>
+                    <span id="tax">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span id="shipping">$0.00</span>
+                </div>
+                <div class="total-row summary-row">
+                    <span>Total</span>
+                    <span id="total">$0.00</span>
+                </div>
+                <button onclick="processCheckout()" class="btn btn-primary checkout-btn">Proceed to Checkout</button>
+                <button onclick="clearCart()" class="clear-cart-btn">Clear Cart</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Cartify. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

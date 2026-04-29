@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Order - Cartify Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .status-card {
+            flex: 1;
+            padding: 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        .status-card.active {
+            border-color: var(--primary);
+            background: #e8f0fe;
+        }
+        .status-card h4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-wrapper">
+                <div class="logo-icon">🛒</div>
+                <span>Cartify</span>
+            </a>
+            <nav>
+                <a href="products.html">Shop</a>
+                <a href="orders.html">Orders</a>
+                <a href="admin.html" style="color: #9333ea">⚙️ Admin</a>
+                <a href="cart.html" class="cart-btn">
+                    🛒 Cart
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="user-profile">
+                    <span class="text-muted">Admin User</span>
+                    <a href="#" class="logout-btn">🚪 Logout</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="admin.html" class="back-link mt-5">← Back to Dashboard</a>
+        
+        <div class="order-card">
+            <div style="display: flex; justify-content: space-between; align-items: center">
+                <div>
+                    <h2 id="admin-order-id">Order</h2>
+                    <p id="admin-order-date" class="text-muted"></p>
+                </div>
+                <div class="order-status-badge status-shipped" style="position: static">
+                    🚚 Shipped
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-card mt-3">
+            <h3>Update Order Status</h3>
+            <p class="text-muted mb-3">Click a button to update the order status</p>
+            
+            <div style="display: flex; gap: 1rem">
+                <div class="status-card" data-status="Processing" onclick="updateOrderStatus('Processing')">
+                    <h4>🕒 Processing</h4>
+                    <p class="text-muted mb-3" style="font-size: 0.8rem">Order received and processing</p>
+                    <button class="btn btn-outline w-100">Set to Processing</button>
+                </div>
+                <div class="status-card active" data-status="Shipped" onclick="updateOrderStatus('Shipped')">
+                    <h4>🚚 Shipped</h4>
+                    <p class="text-muted mb-3" style="font-size: 0.8rem">Order is in transit</p>
+                    <button class="btn btn-primary w-100">Current Status</button>
+                </div>
+                <div class="status-card" data-status="Delivered" onclick="updateOrderStatus('Delivered')">
+                    <h4>✅ Delivered</h4>
+                    <p class="text-muted mb-3" style="font-size: 0.8rem">Order delivered successfully</p>
+                    <button class="btn btn-outline w-100">Mark as Delivered</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-card mt-3">
+            <h3>Order Items</h3>
+            <div id="admin-items" class="mt-3">
+                <!-- Loaded by JS -->
+            </div>
+            <div class="total-row mt-3">
+                <span>Total</span>
+                <span id="admin-total"></span>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

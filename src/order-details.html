@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details - Cartify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-wrapper">
+                <div class="logo-icon">🛒</div>
+                <span>Cartify</span>
+            </a>
+            <nav>
+                <a href="products.html">Shop</a>
+                <a href="orders.html">Orders</a>
+                <a href="cart.html" class="cart-btn">
+                    🛒 Cart
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="user-profile">
+                    <span class="text-muted">Mathu Mathi</span>
+                    <a href="#" class="logout-btn">🚪 Logout</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="orders.html" class="back-link mt-5">← Back to Orders</a>
+        
+        <div class="cart-layout">
+            <div>
+                <div class="order-card">
+                    <h2 id="detail-order-id">Order</h2>
+                    <p id="detail-order-date" class="text-muted"></p>
+                    <div id="detail-status-badge" class="order-status-badge"></div>
+
+                    <div class="tracking-steps">
+                        <div class="step">
+                            <div class="step-icon">✓</div>
+                            <div class="step-label">Processing</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">2</div>
+                            <div class="step-label">Shipped</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">3</div>
+                            <div class="step-label">Delivered</div>
+                        </div>
+                    </div>
+
+                    <p class="text-muted mb-3">Order Placed: <span id="placed-time">Apr 28, 2026, 5:26 PM</span></p>
+                    
+                    <h3>Items in Order</h3>
+                    <div id="detail-items" class="mt-3">
+                        <!-- Loaded by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="cart-card mb-3">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row mt-3">
+                        <span>Subtotal</span>
+                        <span id="detail-subtotal"></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (8%)</span>
+                        <span id="detail-tax"></span>
+                    </div>
+                    <div class="total-row summary-row">
+                        <span>Total</span>
+                        <span id="detail-total"></span>
+                    </div>
+                </div>
+
+                <div class="cart-card">
+                    <h3>Customer Information</h3>
+                    <div class="mt-3">
+                        <p class="text-muted">Name</p>
+                        <p id="cust-name" class="font-weight-600">Mathu Mathi</p>
+                    </div>
+                    <div class="mt-3 mb-3">
+                        <p class="text-muted">Email</p>
+                        <p id="cust-email" class="font-weight-600">mathu9147@gmail.com</p>
+                    </div>
+                    <button class="btn btn-primary w-100" style="width: 100%">📥 Download Invoice</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartify - Shop Everything</title>
+    <title>My Orders - Cartify</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,39 +16,23 @@
             <nav>
                 <a href="products.html">Shop</a>
                 <a href="orders.html">Orders</a>
-                <a href="admin.html" class="text-primary" style="display: flex; align-items: center; gap: 0.25rem">
-                    ⚙️ Admin
-                </a>
                 <a href="cart.html" class="cart-btn">
                     🛒 Cart
                     <span class="cart-count">0</span>
                 </a>
                 <div class="user-profile">
                     <span class="text-muted">Mathu Mathi</span>
-                    <a href="#" class="logout-btn">
-                        🚪 Logout
-                    </a>
+                    <a href="#" class="logout-btn">🚪 Logout</a>
                 </div>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="hero-banner">
-            <div class="container hero-content">
-                <h1>Welcome to Cartify</h1>
-                <p>Shop everything from electronics to fashion, books, home & garden, and more</p>
-            </div>
-        </section>
-
-        <section class="container">
-            <div class="section-header">
-                <h2>Shop by Category</h2>
-            </div>
-            <div id="category-grid" class="category-grid">
-                <!-- Loaded by JS -->
-            </div>
-        </section>
+    <main class="container">
+        <h1 class="mt-5 mb-3">My Orders</h1>
+        <div id="orders-list" style="max-width: 800px">
+            <!-- Loaded by JS -->
+        </div>
     </main>
 
     <footer>
