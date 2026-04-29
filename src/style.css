@@ -602,6 +602,51 @@ nav a:hover {
     font-size: 0.85rem;
 }
 
+/* Shop Category Filter */
+.category-nav-wrapper {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+}
+
+.shop-category-list {
+    display: flex;
+    gap: 1rem;
+    min-width: max-content;
+}
+
+.shop-cat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    background: #f8faff;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.shop-cat-item:hover {
+    background: #eef4ff;
+    color: var(--primary-color);
+}
+
+.shop-cat-item.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+}
+
+.shop-cat-item span {
+    font-size: 1.2rem;
+}
+
 /* Buttons */
 .btn {
     display: inline-block;

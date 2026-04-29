@@ -124,16 +124,44 @@ function renderCategories() {
     `).join('');
 }
 
+function renderShopCategories() {
+    const container = document.getElementById('shop-categories');
+    if (!container) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const activeCat = urlParams.get('category') || 'All';
+
+    const cats = [{ name: 'All', icon: '🛍️' }, ...CATEGORIES];
+
+    container.innerHTML = cats.map(cat => `
+        <a href="products.html?category=${cat.name}" class="shop-cat-item ${activeCat === cat.name ? 'active' : ''}">
+            <span>${cat.icon}</span>
+            ${cat.name}
+        </a>
+    `).join('');
+}
+
 function renderProducts() {
     const grid = document.getElementById('product-grid');
     if (!grid) return;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get('category') || 'Clothing';
+    const category = urlParams.get('category') || 'All';
     
-    document.getElementById('category-title').textContent = `${category} Products`;
+    document.getElementById('category-title').textContent = category === 'All' ? 'All Products' : `${category} Products`;
 
-    grid.innerHTML = PRODUCTS.map(p => `
+    const filtered = category === 'All' 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === category);
+
+    document.getElementById('product-count-text').textContent = `Showing ${filtered.length} products`;
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '<p class="text-center py-5 w-100">No products found in this category.</p>';
+        return;
+    }
+
+    grid.innerHTML = filtered.map(p => `
         <div class="product-card">
             <div class="product-img-wrapper">
                 <span style="font-size: 4rem">${p.img}</span>
@@ -362,7 +390,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartBadge();
     const path = window.location.pathname;
     if (path.includes('index.html') || path === '/' || path.endsWith('/')) renderCategories();
-    if (path.includes('products.html')) renderProducts();
+    if (path.includes('products.html')) {
+        renderShopCategories();
+        renderProducts();
+    }
     if (path.includes('cart.html')) renderCart();
     if (path.includes('orders.html')) renderOrders();
     if (path.includes('order-details.html')) renderOrderDetails();
