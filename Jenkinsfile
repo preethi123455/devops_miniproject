@@ -1,3 +1,4 @@
+// Jenkins pipeline for Cartify Ecommerce Application
 pipeline {
     agent any
 
